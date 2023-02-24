@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<div class="container-fluid">
+  <div class="row fh5co-post-entry">
+    {% for news_item in news_items %}
+    <article class="col-lg-3 col-md-3 col-sm-3 col-xs-6 col-xxs-12 animate-box">
+      <figure>
+        <a href="{{ news_item.url }}">
+          <img
+            src="{{ news_item.image_url }}"
+            alt="News Image"
+            class="img-responsive"
+          />
+        </a>
+      </figure>
+      <span class="fh5co-meta">
+        <a href="{{ news_item.url }}">Read More</a>
+      </span>
+      <h2 class="fh5co-article-title">
+        <a href="{{ news_item.url }}">{{ news_item.title }}</a>
+      </h2>
+      <span class="fh5co-meta fh5co-date">{{ news_item.published_at }}</span>
+    </article>
+    {% endfor %}
+  </div>
+</div>
+
+<div
+  style="display: flex; justify-content: center; align-items: center; gap: 5px"
+>
+  {% if page_obj.has_previous %}
+  <button type="button" class="btn btn-outline">
+    <a href="?page=1">&laquo; first</a>
+  </button>
+  <button type="button" class="btn btn-outline">
+    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+  </button>
+  {% endif %}
+
+  <span class="current">
+    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+  </span>
+
+  {% if page_obj.has_next %}
+  <button type="button" class="btn btn-outline">
+    <a href="?page={{ page_obj.next_page_number }}">next</a>
+  </button>
+  <button type="button" class="btn btn-outline">
+    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+  </button>
+  {% endif %}
+</div>
+
+{% endblock %}
