@@ -1,23 +1,23 @@
 Download and unzip the repo
-    django_project
+    django_project-main
 
-CD to the project directory
-    cd django_project
+Open the project in an IDE (e.g. VSCode). CD to the project directory
+    cd django_project-main
 
 Activate the virtual environment. It is recommended to run in virtual environment.
     source py310_venv/bin/activate
 
 Install all project dependencies
-    pip install requirements.py
-
-Apply the migrations
-    python manage.py migrate
+    pip install -r requirements.txt
 
 Create an .env file at the same level as django_project/settings.py file
     touch .env
 
 Write API key that is to connect to news api. Save and close the file.
     API_KEY='write api key'
+
+Apply the migrations
+    python manage.py migrate
 
 Run the dev-server
     python manage.py runserver
